@@ -7,28 +7,45 @@ using System.Threading.Tasks;
 
 namespace Myfactory
 {
-    class Sofa : Iproduct
+    class Sofa
     {
-        public string Name { get; set; } = "SOfa";
-        public Hashtable Required { get; set; } = new Hashtable
+        public string Name { get; set; } = "Sofa";
+        
+        public Dictionary<string, int> required;
+        public Sofa()
         {
-            {"wood",3},
-            {"fabric",2 },
-            {"cushion",6}
-        };
-
-        public List<Iproduct> RemoveMaterial(List<Material> materials)
+            required = new Dictionary<string, int>();
+            required["wood"] = 3;
+            required["fabric"] = 2;
+            required["cushion"] = 6;
+        }
+        public void RemoveMaterial(List<Material> materials)
         {
-            foreach (var item in materials)
+            for (int i = 0; i < materials.Count; i++)
             {
-                materials.Remove(materials.Find(x => x.Count == item.Count));
+                if (required.ContainsKey(materials[i].Name))
+                {
+                    materials[i].Count -= required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
+                }
             }
-            
         }
 
-        public List<Iproduct> RemoveMMaterial()
-        {
-            throw new NotImplementedException();
-        }
+        //public Dictionary<string,int> Required { get; set; } = new Dictionary<string, int>
+        //{
+        //    {"wood",3},
+        //    {"fabric",2 },
+        //    {"cushion",6}
+        //};
+
+        //public void RemoveMaterial(List<Material> materials)
+        //{
+        //    //foreach (var item in materials)
+        //    //{
+        //    //    materials.Remove(materials.Find(x => x.== item));
+        //    //}
+        //    materials.Remove();
+
+        //}
+
     }
 }

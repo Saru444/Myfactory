@@ -8,7 +8,7 @@ namespace Myfactory
 {
     class Wearhouse
     {
-        private static List<Material> _materials = new();
+        private List<Material> _materials = new();
         private List<Iproduct> _productions = new();
         public Wearhouse()
         {

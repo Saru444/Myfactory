@@ -10,7 +10,7 @@ namespace Myfactory
     interface Iproduct
     {
         public string Name { get; set; }
-        public Hashtable Required { get; set; }
-        List<Iproduct> RemoveMMaterial();
+        Dictionary<string, int> Required { get; set; }
+        void RemoveMMaterial(List<Material> materials);
     }
 }

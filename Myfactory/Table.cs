@@ -7,17 +7,25 @@ using System.Threading.Tasks;
 
 namespace Myfactory
 {
-    class Table:Iproduct
+    class Table
     {
         public string Name { get; set; } = "Dining table";
-        public Hashtable Required { get; set; } = new Hashtable
+        public Dictionary<string, int> required;
+        public Table()
         {
-            {"wood",2}
-        };
+            required = new Dictionary<string, int>;
+            required["wood"] = 2;
+        }
 
-        public List<Iproduct> RemoveMMaterial()
+        public void RemoveMMaterial(List<Material> materials)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < materials.Count; i++)
+            {
+                if (required.ContainsKey(materials[i].Name))
+                {
+                    materials[i].Count -= required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
+                }
+            }
         }
     }
   
