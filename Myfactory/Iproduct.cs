@@ -10,6 +10,6 @@ namespace Myfactory
     interface Iproduct
     {
         public string Name { get; set; }
-        void RemoveMaterial(List<Material> materials);
+        List<Material> RemoveMaterial(List<Material> materials);
     }
 }

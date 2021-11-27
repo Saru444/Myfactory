@@ -18,7 +18,7 @@ namespace Myfactory
             _required["fabric"] = 2;
             _required["cushion"] = 6;
         }
-        public void RemoveMaterial(List<Material> materials)
+        public List<Material> RemoveMaterial(List<Material> materials)
         {
             for (int i = 0; i < materials.Count; i++)
             {
@@ -27,6 +27,7 @@ namespace Myfactory
                     materials[i].Count -= _required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
                 }          
             }
+            return materials;
         }
         //public Dictionary<string,int> Required { get; set; } = new Dictionary<string, int>
         //{
