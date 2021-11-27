@@ -8,7 +8,7 @@ namespace Myfactory
 {
     class Factory
     {
-        Table ta = new();
+        Iproduct ip = new Table();
         public void MarkOrder()
         {
             Title();
@@ -18,7 +18,7 @@ namespace Myfactory
             switch (input)
             {
                 case 1:
-                    ta.RemoveMaterial(_materials);
+                    ip.RemoveMaterial(_materials);
                     break;
             }
         }
