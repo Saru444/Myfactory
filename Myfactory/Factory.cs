@@ -8,21 +8,25 @@ namespace Myfactory
 {
     class Factory
     {
-        
+        Table ta = new();
         public void MarkOrder()
         {
             Title();
             int input = Tryparse();
-            Console.WriteLine("How many do you want to order ");
-            int count = Tryparse();
-            
-
+            //Console.WriteLine("How many do you want to order ");
+            //int count = Tryparse();
+            switch (input)
+            {
+                case 1:
+                    ta.RemoveMaterial(_materials);
+                    break;
+            }
         }
         public void Title()
         {
             Console.WriteLine("");
             Console.WriteLine(@"____ ____ ____ ____ ____ ____ ____            ");
-            Console.WriteLine(@"||F |||A |||C |||T |||O |||R |||R ||           ");
+            Console.WriteLine(@"||F |||A |||C |||T |||O |||R |||Y ||           ");
             Console.WriteLine(@"||__|||__|||__|||__|||__|||__|||__||          ");
             Console.WriteLine(@"|/__\|/__\|/__\|/__\|/__\|/__\|/__\|          ");
             Console.WriteLine("                                                ");

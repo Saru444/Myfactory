@@ -7,29 +7,31 @@ using System.Threading.Tasks;
 
 namespace Myfactory
 {
-    class Sofa
+    class Sofa:Iproduct
     {
         public string Name { get; set; } = "Sofa";
-        
-        public Dictionary<string, int> required;
+        public Dictionary<string, int> _required;
         public Sofa()
         {
-            required = new Dictionary<string, int>();
-            required["wood"] = 3;
-            required["fabric"] = 2;
-            required["cushion"] = 6;
+            _required = new Dictionary<string, int>();
+            _required["wood"] = 3;
+            _required["fabric"] = 2;
+            _required["cushion"] = 6;
         }
         public void RemoveMaterial(List<Material> materials)
         {
             for (int i = 0; i < materials.Count; i++)
             {
-                if (required.ContainsKey(materials[i].Name))
+                if (_required.ContainsKey(materials[i].Name))
                 {
-                    materials[i].Count -= required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
+                    materials[i].Count -= _required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
+                }
+                else
+                {
+                    break;
                 }
             }
         }
-
         //public Dictionary<string,int> Required { get; set; } = new Dictionary<string, int>
         //{
         //    {"wood",3},

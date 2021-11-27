@@ -9,7 +9,7 @@ namespace Myfactory
     class Wearhouse
     {
         private List<Material> _materials = new();
-        private List<Iproduct> _productions = new();
+        //private List<Iproduct> _productions = new();
         public Wearhouse()
         {
             _materials.Add(new Material { Name = "wood", Count = 10 });

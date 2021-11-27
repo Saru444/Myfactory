@@ -10,7 +10,6 @@ namespace Myfactory
     interface Iproduct
     {
         public string Name { get; set; }
-        Dictionary<string, int> Required { get; set; }
-        void RemoveMMaterial(List<Material> materials);
+        void RemoveMaterial(List<Material> materials);
     }
 }
