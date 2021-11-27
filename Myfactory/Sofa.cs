@@ -25,11 +25,7 @@ namespace Myfactory
                 if (_required.ContainsKey(materials[i].Name))
                 {
                     materials[i].Count -= _required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
-                }
-                else
-                {
-                    break;
-                }
+                }          
             }
         }
         //public Dictionary<string,int> Required { get; set; } = new Dictionary<string, int>
