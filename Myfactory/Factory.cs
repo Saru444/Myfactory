@@ -15,21 +15,23 @@ namespace Myfactory
             int input = Tryparse();
             //Console.WriteLine("How many do you want to order ");
             //int count = Tryparse();
-            switch (input)
-            {
-                case 1:
-                    ip.RemoveMaterial(_materials);
-                    break;
-            }
+            //switch (input)
+            //{
+            //    case 1:
+            //        ip.RemoveMaterial(_materials);
+            //        break;
+            //}
         }
         public void Title()
         {
             Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine(@"____ ____ ____ ____ ____ ____ ____            ");
             Console.WriteLine(@"||F |||A |||C |||T |||O |||R |||Y ||           ");
             Console.WriteLine(@"||__|||__|||__|||__|||__|||__|||__||          ");
             Console.WriteLine(@"|/__\|/__\|/__\|/__\|/__\|/__\|/__\|          ");
             Console.WriteLine("                                                ");
+            Console.ResetColor();
             Console.WriteLine("Which product do you want to order?");
             Console.WriteLine("[1] Dining table");
             Console.WriteLine("[2]. Sofa");
