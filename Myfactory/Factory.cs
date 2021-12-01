@@ -8,19 +8,9 @@ namespace Myfactory
 {
     class Factory
     {
-        Iproduct ip = new Table();
         public void MarkOrder()
         {
             Title();
-            int input = Tryparse();
-            //Console.WriteLine("How many do you want to order ");
-            //int count = Tryparse();
-            switch (input)
-            {
-                case 1:
-                    ip.RemoveMaterial();
-                    break;
-            }
         }
         public void Title()
         {

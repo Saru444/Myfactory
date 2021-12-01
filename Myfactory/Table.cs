@@ -7,26 +7,46 @@ using System.Threading.Tasks;
 
 namespace Myfactory
 {
-    class Table:Iproduct
+    class Table:Furniture,Iitem
     {
-        public string Name { get; set; } = "Dining table";
-        public Dictionary<string, int> _required;
+        public Dictionary<string, int> Required = new();
         public Table()
         {
-            _required = new Dictionary<string, int>();
-            _required["wood"] = 2;
+            this.Name = "table";
+            Required["wood"] = 2;
         }
-        public List<Material> RemoveMaterial(List<Material> materials)
+        public override List<Iitem> RemoveMaterial(List<Iitem> inventory)
         {
-            for (int i = 0; i < materials.Count; i++)
+            foreach (var post in Required)
             {
-                if (_required.ContainsKey(materials[i].Name))
+                for (int i = 0; i < post.Value; i++)
                 {
-                    materials[i].Count -= _required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
-                }            
+                    inventory.Remove(inventory.Find(x => x.Name == post.Key));
+                }
             }
-            return materials;
+            return inventory;
         }
+
+
+
+
+
+
+
+
+
+
+        //public List<Material> RemoveMaterial(List<Material> materials)
+        //{
+        //    for (int i = 0; i < materials.Count; i++)
+        //    {
+        //        if (_required.ContainsKey(materials[i].Name))
+        //        {
+        //            materials[i].Count -= _required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
+        //        }            
+        //    }
+        //    return materials;
+        //}
     }
   
 }

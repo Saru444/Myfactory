@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Myfactory
 {
-    class Material:Iitem
+    public abstract class Furniture
     {
         public string Name { get; set; }
+        public Dictionary<string, int> Rrequired { get; set; }
+        public abstract List<Iitem> RemoveMaterial(List<Iitem> inventory);
     }
 }

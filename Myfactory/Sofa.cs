@@ -7,44 +7,52 @@ using System.Threading.Tasks;
 
 namespace Myfactory
 {
-    class Sofa:Iproduct
+    class Sofa: Furniture,Iitem
     {
-        public string Name { get; set; } = "Sofa";
-        public Dictionary<string, int> _required;
+        public Dictionary<string, int> Required = new();
         public Sofa()
         {
-            _required = new Dictionary<string, int>();
-            _required["wood"] = 3;
-            _required["fabric"] = 2;
-            _required["cushion"] = 6;
-        }
-        public List<Material> RemoveMaterial(List<Material> materials)
+            this.Name = "sofa";
+            Required["wood"] = 3;
+            Required["fabric"] = 2;
+            Required["cushion"] = 6;
+        }    
+        public override List<Iitem> RemoveMaterial(List<Iitem> inventory)
         {
-            for (int i = 0; i < materials.Count; i++)
+            foreach (var post in Required)
             {
-                if (_required.ContainsKey(materials[i].Name))
+                for (int i = 0; i < post.Value; i++)
                 {
-                    materials[i].Count -= _required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
-                }          
+                    inventory.Remove(inventory.Find(x => x.Name == post.Key));
+                }
             }
-            return materials;
+            return inventory;
         }
-        //public Dictionary<string,int> Required { get; set; } = new Dictionary<string, int>
-        //{
-        //    {"wood",3},
-        //    {"fabric",2 },
-        //    {"cushion",6}
-        //};
 
-        //public void RemoveMaterial(List<Material> materials)
-        //{
-        //    //foreach (var item in materials)
-        //    //{
-        //    //    materials.Remove(materials.Find(x => x.== item));
-        //    //}
-        //    materials.Remove();
 
+
+
+
+
+
+
+
+
+
+
+
+        //public List<Material> RemoveMaterial(List<Material> materials)
+        //{
+        //    for (int i = 0; i < materials.Count; i++)
+        //    {
+        //        if (_required.ContainsKey(materials[i].Name))
+        //        {
+        //            materials[i].Count -= _required.FirstOrDefault(x => x.Key == materials[i].Name).Value;
+        //        }          
+        //    }
+        //    return materials;
         //}
+
 
     }
 }
