@@ -23,7 +23,10 @@ namespace Myfactory
         {
             for (int i = 0; i < 15; i++)
             {
-                _inventory.Add(materials);
+                if(_inventory.Find(x=>x.Name==materials))
+                {
+                    _inventory.Add(materials);
+                }              
             }
         }
         public List<Iitem> PickUp()
