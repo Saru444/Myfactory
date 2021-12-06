@@ -10,6 +10,6 @@ namespace Myfactory
     {
         public string Name { get; set; }
         public Dictionary<string, int> Rrequired { get; set; }
-        public abstract List<Iitem> RemoveMaterial(List<Iitem> inventory);
+        public abstract List<Material> RemoveMaterial(List<Material> materials);
     }
 }

@@ -8,10 +8,6 @@ namespace Myfactory
 {
     class Factory
     {
-        public void MarkOrder()
-        {
-            Title();
-        }
         public void Title()
         {
             Console.WriteLine("");
@@ -27,6 +23,13 @@ namespace Myfactory
             Console.WriteLine("[2]. Sofa");
             Console.WriteLine("[3]. Exit");
         }
+        public void MarkOrder()
+        {
+            Title();
+
+
+        }
+      
         private int Tryparse()
         {
             int input = 0;

@@ -17,16 +17,16 @@ namespace Myfactory
             Required["fabric"] = 2;
             Required["cushion"] = 6;
         }    
-        public override List<Iitem> RemoveMaterial(List<Iitem> inventory)
+        public override List<Material> RemoveMaterial(List<Material> materials)
         {
             foreach (var post in Required)
             {
                 for (int i = 0; i < post.Value; i++)
                 {
-                    inventory.Remove(inventory.Find(x => x.Name == post.Key));
+                    materials.Remove(materials.Find(x => x.Name == post.Key));
                 }
             }
-            return inventory;
+            return materials;
         }
 
 
