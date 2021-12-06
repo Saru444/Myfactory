@@ -8,25 +8,23 @@ namespace Myfactory
 {
     class Wearhouse
     {
-        private List<Iitem> _inventory;
+        private List<string> _typenames;
         private List<Iitem> _sendToFactory;
         private List<Material> _materials = new();
         public Wearhouse()
         {
-            _inventory = new();
+            _typenames = new List<string>() { "Wood", "cushion", "fabric" };
             _sendToFactory = new();
-            _materials.Add(new Material { Name = "wood" });
-            _materials.Add(new Material { Name = "fabric" });
-            _materials.Add(new Material { Name = "cushion" });
+            Stock();
         }
-        public void Stock(List<Material> materials)
+        public void Stock()
         {
-            for (int i = 0; i < 15; i++)
+            foreach (var item in _typenames)
             {
-                if(_inventory.Find(x=>x.Name==materials))
+                while (_materials.FindAll(x => x.Name == item).Count < 15)
                 {
-                    _inventory.Add(materials);
-                }              
+                    _materials.Add(new Material { Name = item });
+                }
             }
         }
         public List<Iitem> PickUp()
@@ -35,9 +33,9 @@ namespace Myfactory
             {
                 Console.WriteLine("Which item do you want?");
                 string input = Console.ReadLine();
-                if (_inventory.Find(x => x.Name == input))
+                if (_typenames.Find(x => x.Name == input))
                 {
-                    _inventory.Remove(_inventory.Find(x => x.Name == input));
+                    _typenames.Remove(_typenames.Find(x => x.Name == input));
                     _sendToFactory.Add(_sendToFactory.Find(x => x.Name == input));
                 }
                 else
@@ -55,9 +53,9 @@ namespace Myfactory
         {
             Console.WriteLine("Wearhouse List");
             Console.WriteLine("--------------");
-            foreach (var item in _inventory)
+            foreach (var item in _typenames)
             {
-                Console.WriteLine($"{item.Name}");
+                Console.WriteLine($"{item}");
             }
         }
     }

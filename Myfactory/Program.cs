@@ -9,7 +9,8 @@ namespace Myfactory
             Wearhouse wh = new();
             Factory fa = new();
             wh.PrintInventory();
-            wh.PickUpFromWearhouse();
+            wh.Stock();
+            //wh.PickUpFromWearhouse();
 
         }
     }
