@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Myfactory
 {
-    interface Iitem
+    public interface Iitem
     {
         public string Name { get; set; }
     }

@@ -7,8 +7,9 @@ namespace Myfactory
         static void Main(string[] args)
         {
             Wearhouse wh = new();
-            wh.Stock();
+            wh.PrintInventory();
             wh.PickUp();
+            //wh.Produce();
 
         }
     }

@@ -23,7 +23,7 @@ namespace Myfactory
         {
             foreach (var item in _typenames)
             {
-                while (_inventory.FindAll(x => x.Name == item).Count < 15)
+                while (_inventory.FindAll(x => x.Name == item).Count < 10)
                 {
                     _inventory.Add(new Material { Name = item });
                 }
@@ -63,28 +63,29 @@ namespace Myfactory
         public void Produce()
         {
             Title();
+            PickUp();
             int choice = TryParse();
             switch (choice)
             {
                 case 1:
                     Furniture table = new Table();
-                    table.RemoveMaterial(_inventory);
+                    table.RemoveMaterial(_inventory,_sendToFactory);
                     break;
                 case 2:
                     Furniture sofa = new Sofa();
-                    sofa.RemoveMaterial(_inventory);
+                    sofa.RemoveMaterial(_inventory,_sendToFactory);
                     break;
             }
         }
-        //public void PrintInventory()
-        //{
-        //    Console.WriteLine("Wearhouse List");
-        //    Console.WriteLine("--------------");
-        //    foreach (var item in _typenames)
-        //    {
-        //        Console.WriteLine($"{item}");
-        //    }
-        //}
+        public void PrintInventory()
+        {
+            Console.WriteLine("Wearhouse List");
+            Console.WriteLine("--------------");
+            foreach (var item in _inventory)
+            {
+                Console.WriteLine($"{item.Name}");
+            }
+        }
         private int TryParse()
         {
             int input;
