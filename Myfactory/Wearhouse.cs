@@ -11,7 +11,7 @@ namespace Myfactory
         private List<Iitem> _inventory;
         private List<Iitem> _sendToFactory;
         private List<string> _typenames;
-        private List<Material> _materials = new();
+        //private List<Material> _materials = new();
         public Wearhouse()
         {
             _inventory = new();
@@ -23,9 +23,9 @@ namespace Myfactory
         {
             foreach (var item in _typenames)
             {
-                while (_materials.FindAll(x => x.Name == item).Count < 15)
+                while (_inventory.FindAll(x => x.Name == item).Count < 15)
                 {
-                    _materials.Add(new Material { Name = item });
+                    _inventory.Add(new Material { Name = item });
                 }
             }
         }
@@ -45,9 +45,9 @@ namespace Myfactory
                 string input = Console.ReadLine();
                 Console.WriteLine("How many do you want?");
                 int amount = TryParse();
-                if (_inventory.FindAll(x=>x.Name==input).Count>=amount)
+                if (_inventory.FindAll(x => x.Name == input).Count >= amount)
                 {
-                    UserChoice(input,amount);
+                    UserChoice(input, amount);
                 }
                 else
                 {
@@ -59,16 +59,32 @@ namespace Myfactory
                     return _sendToFactory;
                 }
             }
-        }
-        public void PrintInventory()
+        }      
+        public void Produce()
         {
-            Console.WriteLine("Wearhouse List");
-            Console.WriteLine("--------------");
-            foreach (var item in _typenames)
+            Title();
+            int choice = TryParse();
+            switch (choice)
             {
-                Console.WriteLine($"{item}");
+                case 1:
+                    Furniture table = new Table();
+                    table.RemoveMaterial(_inventory);
+                    break;
+                case 2:
+                    Furniture sofa = new Sofa();
+                    sofa.RemoveMaterial(_inventory);
+                    break;
             }
         }
+        //public void PrintInventory()
+        //{
+        //    Console.WriteLine("Wearhouse List");
+        //    Console.WriteLine("--------------");
+        //    foreach (var item in _typenames)
+        //    {
+        //        Console.WriteLine($"{item}");
+        //    }
+        //}
         private int TryParse()
         {
             int input;
@@ -77,6 +93,21 @@ namespace Myfactory
                 Console.WriteLine("you haven't entered a correct integer, try again");
             }
             return input;
+        }
+        public void Title()
+        {
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine(@"____ ____ ____ ____ ____ ____ ____            ");
+            Console.WriteLine(@"||F |||A |||C |||T |||O |||R |||Y ||           ");
+            Console.WriteLine(@"||__|||__|||__|||__|||__|||__|||__||          ");
+            Console.WriteLine(@"|/__\|/__\|/__\|/__\|/__\|/__\|/__\|          ");
+            Console.WriteLine("                                                ");
+            Console.ResetColor();
+            Console.WriteLine("Which product do you want to order?");
+            Console.WriteLine("[1] Dining table");
+            Console.WriteLine("[2]. Sofa");
+            Console.WriteLine("[3]. Exit");
         }
     }
 }

@@ -15,18 +15,19 @@ namespace Myfactory
             this.Name = "sofa";
             Required["wood"] = 3;
             Required["fabric"] = 2;
-            Required["cushion"] = 6;
+            Required["cushion"] = 4;
         }    
-        public override List<Material> RemoveMaterial(List<Material> materials)
+        public override List<Iitem> RemoveMaterial(List<Iitem> sendToFactory, List<Iitem> inventory)
         {
             foreach (var post in Required)
             {
                 for (int i = 0; i < post.Value; i++)
                 {
-                    materials.Remove(materials.Find(x => x.Name == post.Key));
+                    sendToFactory.Remove(sendToFactory.Find(x => x.Name == post.Key));
+                    inventory.Add(new Sofa());
                 }
             }
-            return materials;
+            return inventory;
         }
 
 
